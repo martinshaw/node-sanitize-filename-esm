@@ -1,4 +1,16 @@
-# sanitize-filename [![build status](https://secure.travis-ci.org/parshap/node-sanitize-filename.svg?branch=master)](http://travis-ci.org/parshap/node-sanitize-filename)
+# node-sanitize-filename-esm
+
+A functionally verbatim fork of the [node-sanitize-filename](https://github.com/parshap/node-sanitize-filename) package which is named `sanitize-filename` on npm. 
+
+The only changes which I have made are to the package.json file to add the `module` field and to the index.js file to add the `export default` statement.
+
+This fork is intended to be used as a drop-in replacement for the original package when using ES modules.
+
+I am using it as part of my Marchive product.
+
+Following is the original README.md file from the original package, with updated examples;
+
+# node-sanitize-filename [![build status](https://secure.travis-ci.org/parshap/node-sanitize-filename.svg?branch=master)](http://travis-ci.org/parshap/node-sanitize-filename)
 
 Sanitize a string to be safe for use as a filename by removing directory
 paths and invalid characters.
@@ -14,13 +26,13 @@ npm install sanitize-filename
 ## Example
 
 ```js
-var sanitize = require("sanitize-filename");
+import sanitize from "sanitize-filename";
 
 // Some string that may be unsafe or invalid as a filename
-var UNSAFE_USER_INPUT = "~/.\u0000ssh/authorized_keys";
+const UNSAFE_USER_INPUT = "~/.\u0000ssh/authorized_keys";
 
 // Sanitize the string to be safe for use as a filename.
-var filename = sanitize(UNSAFE_USER_INPUT);
+const filename = sanitize(UNSAFE_USER_INPUT);
 // -> "~.sshauthorized_keys"
 ```
 
@@ -53,7 +65,7 @@ filename.
 An empty string `""` can be returned. For example:
 
 ```js
-var sanitize = require("sanitize-filename");
+import sanitize from "sanitize-filename";
 sanitize("..")
 // -> ""
 
@@ -64,7 +76,7 @@ sanitize("..")
 Two different inputs can return the same value. For example:
 
 ```js
-var sanitize = require("sanitize-filename");
+import sanitize from "sanitize-filename";
 sanitize("file?")
 // -> "file"
 sanitize ("*file*")
